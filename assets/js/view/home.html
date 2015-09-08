@@ -1,0 +1,24 @@
+<md-content layout="column" flex class="md-padding">
+  <h2>You might know them</h2>
+  <div class="gridListdemoDynamicTiles" flex>
+    <md-grid-list
+          md-cols-sm="1" md-cols-md="2" md-cols-gt-md="6"
+          md-row-height-gt-md="1:1" md-row-height="4:3"
+          md-gutter="8px" md-gutter-gt-sm="4px" >
+      <md-grid-tile ng-repeat="tile in tiles"
+                    md-rowspan="{{tile.span.row}}"
+                    md-colspan="{{tile.span.col}}"
+                    md-colspan-sm="1"
+                    ng-class="tile.background" >
+        <md-icon md-svg-icon="{{tile.icon}}"></md-icon>
+        <md-button class="md-fab" ng-click="addFriend(tile)" aria-label="Add">
+          <ng-md-icon icon="add" style="fill: white" size="30"></ng-md-icon>
+        </md-button>
+        <md-grid-tile-footer>
+          <h3>{{tile.title}}</h3>
+          <h4>{{tile.email}}</h4>
+        </md-grid-tile-footer>
+      </md-grid-tile>
+    </md-grid-list>
+  </div>
+</md-content>

@@ -1,0 +1,118 @@
+<html lang="en" ng-app="Orkut">
+  <head>
+    <link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/angular_material/0.9.4/angular-material.min.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=RobotoDraft:300,400,500,700,400italic">
+    <link rel="stylesheet" type="text/css" href="assets/css/style.css">
+    <meta name="viewport" content="initial-scale=1" />
+    <title>Orkut</title>
+  </head>
+  <body layout="column" ng-controller="AppCtrl" ng-cloak>
+    <md-toolbar>
+      <div class="md-toolbar-tools">
+        <md-button ng-click="toggleSidenav('left')" hide-gt-sm class="md-icon-button">
+          <md-icon aria-label="Menu" md-svg-icon="https://s3-us-west-2.amazonaws.com/s.cdpn.io/68133/menu.svg"></md-icon>
+        </md-button>
+        <h2>
+          <span><a ui-sref="home">Orkut</a></span>
+        </h2>
+        <md-button>
+          Scrapbook
+        </md-button>
+        <md-button>
+          Messages
+        </md-button>
+        <form ng-submit="search()" style="margin-bottom:0;">
+          <md-input-container flex>
+            <label>Search</label>
+            <input ng-model="query">
+          </md-input-container>
+        </form>
+        <span flex></span>
+        <p ng-show="me">Hi, {{me.name}}</p>
+      </div>
+    </md-toolbar>
+    <div layout="row" flex id="popupContainer">
+      <div ng-controller="SidebarCtrl">
+        <md-sidenav layout="column" class="md-sidenav-left md-whiteframe-z2" md-component-id="left" md-is-locked-open="$mdMedia('gt-sm')">
+          <md-list>
+            <md-subheader class="md-no-sticky">Friends</md-subheader>
+            <md-list-item class="md-3-line" ng-repeat="item in friends">
+              <img ng-src="{{item.face}}?{{$index}}" class="md-avatar" alt="{{item.who}}" />
+              <div class="md-list-item-text">
+                <h3>{{ item.who }}</h3>
+                <h4>{{ item.what }}</h4>
+                <p>{{ item.notes }}</p>
+              </div>
+            </md-list-item>
+            <md-list-item class="md-3-line" ng-hide="friends.length > 0">
+              <ng-md-icon icon="people" style="fill: purple" class="md-avatar" size="30"></ng-md-icon>
+              <div class="md-list-item-text">
+                <h3>No friends yet</h3>
+                <p>Let's go! Add some folks</p>
+              </div>
+            </md-list-item>
+            <md-divider ></md-divider>
+            <md-subheader class="md-no-sticky">Requests received</md-subheader>
+            <md-list-item class="md-3-line" ng-repeat="person in received">
+              <md-icon md-svg-icon="avatar:svg-{{ person.userRequester.name.charCodeAt(0) % 12}}" class="md-avatar"></md-icon>
+              <div class="md-list-item-text">
+                <h3>{{ person.userRequester.name }}</h3>
+                <p>{{ person.userRequester.email }}</p>
+                    <ng-md-icon icon="close" style="fill: purple" class="md-icon-button md-primary" size="20"></ng-md-icon>
+                    <ng-md-icon icon="done" style="fill: purple" class="md-icon-button md-primary" size="20"></ng-md-icon>
+              </div>
+            </md-list-item>
+            <md-list-item class="md-3-line" ng-hide="received.length > 0">
+              <ng-md-icon icon="call_received" style="fill: purple" class="md-avatar" size="30"></ng-md-icon>
+              <div class="md-list-item-text">
+                <h3>No received request pending</h3>
+                <p>You are up-to-date here</p>
+              </div>
+            </md-list-item>
+            <md-divider ></md-divider>
+            <md-subheader class="md-no-sticky">Requests sent</md-subheader>
+            <md-list-item class="md-3-line" ng-repeat="person in sent">
+              <md-icon md-svg-icon="avatar:svg-{{ person.userRequested.name.charCodeAt(0) % 12}}" class="md-avatar"></md-icon>
+              <div class="md-list-item-text">
+                <h3>{{ person.userRequested.name }}</h3>
+                <p>{{ person.userRequested.email }}</p>
+              </div>
+            </md-list-item>
+            <md-list-item class="md-3-line" ng-hide="sent.length > 0">
+              <ng-md-icon icon="call_made" style="fill: purple" class="md-avatar" size="30"></ng-md-icon>
+              <div class="md-list-item-text">
+                <h3>No sent request pending</h3>
+                <p>You are up-to-date here</p>
+              </div>
+            </md-list-item>
+          </md-list>
+         </md-sidenav>
+        </div>
+        <div layout="column" flex id="content" ui-view></div>
+    </div>
+    <!-- Angular Material Dependencies -->
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.2/angular.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.2/angular-resource.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.2/angular-cookies.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.2/angular-animate.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.2/angular-aria.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angular_material/0.10.1/angular-material.min.js"></script>
+    <script type="text/javascript" src="//cdn.rawgit.com/auth0/angular-jwt/master/dist/angular-jwt.js"></script>
+    <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/angular-ui-router/0.2.15/angular-ui-router.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/angular-material-icons/0.5.0/angular-material-icons.min.js"></script>
+    <script type="text/javascript" src="assets/js/app.js"></script>
+    <script type="text/javascript" src="assets/js/config/theme.js"></script>
+    <script type="text/javascript" src="assets/js/config/constant.js"></script>
+    <script type="text/javascript" src="assets/js/config/interceptor.js"></script>
+    <script type="text/javascript" src="assets/js/config/cors.js"></script>
+    <script type="text/javascript" src="assets/js/config/icon.js"></script>
+    <script type="text/javascript" src="assets/js/config/route.js"></script>
+    <script type="text/javascript" src="assets/js/factory/HttpResponseInterceptor.js"></script>
+    <script type="text/javascript" src="assets/js/service/User.js"></script>
+    <script type="text/javascript" src="assets/js/service/Friendship.js"></script>
+    <script type="text/javascript" src="assets/js/controller/AppCtrl.js"></script>
+    <script type="text/javascript" src="assets/js/controller/SearchCtrl.js"></script>
+    <script type="text/javascript" src="assets/js/controller/SidebarCtrl.js"></script>
+  </body>
+</html>
+
