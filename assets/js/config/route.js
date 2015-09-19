@@ -15,6 +15,11 @@ app.config(function($stateProvider, $urlRouterProvider) {
       url : '/search/:query',
       templateUrl : 'assets/js/view/search.html',
       controller : 'SearchCtrl'
+    }).
+    state('chat', {
+      url : '/chat',
+      templateUrl : 'assets/js/view/chat.html',
+      controller : 'ChatCtrl'
     });
 
 });

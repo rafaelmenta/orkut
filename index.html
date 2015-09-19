@@ -18,8 +18,8 @@
         <md-button>
           Scrapbook
         </md-button>
-        <md-button>
-          Messages
+        <md-button ui-sref="chat">
+          Chat
         </md-button>
         <form ng-submit="search()" style="margin-bottom:0;">
           <md-input-container flex>
@@ -91,12 +91,14 @@
         <div layout="column" flex id="content" ui-view></div>
     </div>
     <!-- Angular Material Dependencies -->
-    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.2/angular.min.js"></script>
-    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.2/angular-resource.js"></script>
-    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.2/angular-cookies.js"></script>
-    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.2/angular-animate.min.js"></script>
-    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.2/angular-aria.min.js"></script>
-    <script src="https://ajax.googleapis.com/ajax/libs/angular_material/0.10.1/angular-material.min.js"></script>
+    <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.4.2/angular.min.js"></script>
+    <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.4.2/angular-resource.js"></script>
+    <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.4.2/angular-cookies.js"></script>
+    <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.4.2/angular-animate.min.js"></script>
+    <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.4.2/angular-aria.min.js"></script>
+    <script src="//ajax.googleapis.com/ajax/libs/angular_material/0.10.1/angular-material.min.js"></script>
+    <script type="text/javascript" src="//cdn.firebase.com/js/client/2.2.4/firebase.js"></script>
+    <script type="text/javascript" src="//cdn.firebase.com/libs/angularfire/1.1.2/angularfire.min.js"></script>
     <script type="text/javascript" src="//cdn.rawgit.com/auth0/angular-jwt/master/dist/angular-jwt.js"></script>
     <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/angular-ui-router/0.2.15/angular-ui-router.js"></script>
     <script src="//cdnjs.cloudflare.com/ajax/libs/angular-material-icons/0.5.0/angular-material-icons.min.js"></script>
@@ -108,11 +110,13 @@
     <script type="text/javascript" src="assets/js/config/icon.js"></script>
     <script type="text/javascript" src="assets/js/config/route.js"></script>
     <script type="text/javascript" src="assets/js/factory/HttpResponseInterceptor.js"></script>
+    <script type="text/javascript" src="assets/js/factory/ChatRoom.js"></script>
     <script type="text/javascript" src="assets/js/service/User.js"></script>
     <script type="text/javascript" src="assets/js/service/Friendship.js"></script>
     <script type="text/javascript" src="assets/js/controller/AppCtrl.js"></script>
     <script type="text/javascript" src="assets/js/controller/SearchCtrl.js"></script>
     <script type="text/javascript" src="assets/js/controller/SidebarCtrl.js"></script>
+    <script type="text/javascript" src="assets/js/controller/ChatCtrl.js"></script>
   </body>
 </html>
 

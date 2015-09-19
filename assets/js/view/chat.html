@@ -1,0 +1,21 @@
+<md-list>
+  <md-list-item class="md-3-line" ng-repeat="message in messages">
+    <md-icon md-svg-icon="avatar:svg-{{ message.from.charCodeAt(0) % 11 + 1}}" class="md-avatar"></md-icon>
+    <div class="md-list-item-text" layout="column">
+      <h3>{{message.from}}</h3>
+      <p>{{message.content}}</p>
+    </div>
+  </md-list-item>
+</md-list>
+
+<md-content>
+  <form ng-submit="addMessage()">
+    <md-input-container flex>
+      <label>Message</label>
+      <input ng-model="message" type="text"/>
+    </md-input-container>
+    <md-button class="md-fab md-mini md-primary" aria-label="Add Message" type="submit">
+      <ng-md-icon icon="send" style="fill: white" size="30"></ng-md-icon>
+    </md-button>
+  </form>
+</md-content>

@@ -6,5 +6,6 @@ var app = angular.module('Orkut', [
   'ngCookies',
   'angular-jwt',
   'ngMdIcons',
-  'ui.router'
+  'ui.router',
+  'firebase'
 ]);
