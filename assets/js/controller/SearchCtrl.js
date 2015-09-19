@@ -29,7 +29,7 @@ app.controller('SearchCtrl', function($scope, $stateParams, User, Friendship, $c
   };
 
   $scope.isFriend = function(person) {
-    var friendsFiltered = $filter('filter')(friends, {email : person.email});
+    var friendsFiltered = $filter('filter')(friends, { user : { email : person.email }});
     var sentFiltered = $filter('filter')(sent, { userRequested: {email : person.email}});
     var receivedFiltered = $filter('filter')(received, { userRequester: {email : person.email}});
 

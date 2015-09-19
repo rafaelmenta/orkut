@@ -5,7 +5,7 @@
     <md-list-item ng-click="navigateTo(setting.extraScreen, $event)" ng-repeat="person in people">
       <md-icon md-svg-icon="avatar:svg-{{ person.name.charCodeAt(0) % 12}}" class="md-avatar"></md-icon>
       <p> {{ person.name }} </p>
-      <md-button class="md-fab md-mini" ng-click="addFriend(person)" aria-label="Add" ng-hide="isMe(person) || isFriend(person)">
+      <md-button class="md-fab md-mini" ng-click="addFriend(person)" aria-label="Add" ng-if="!(isMe(person) || isFriend(person))">
         <ng-md-icon icon="add" style="fill: white" size="30"></ng-md-icon>
       </md-button>
     </md-list-item>

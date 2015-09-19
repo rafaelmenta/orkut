@@ -4,7 +4,7 @@ var app = app || angular.module('Orkut');
 
 app.config(function($stateProvider, $urlRouterProvider) {
 
-  $urlRouterProvider.otherwise('home');
+  $urlRouterProvider.otherwise('/');
 
   $stateProvider
     .state('home', {
